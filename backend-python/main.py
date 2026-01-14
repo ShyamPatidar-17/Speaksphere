@@ -7,6 +7,10 @@ app = FastAPI()
 class TextIn(BaseModel):
     text: str
 
+@app.get("/")
+def home():
+    return {"status": "SpeakSphere backend running"}
+
 @app.post("/analyze")
 def analyze(data: TextIn):
     polarity = TextBlob(data.text).sentiment.polarity
