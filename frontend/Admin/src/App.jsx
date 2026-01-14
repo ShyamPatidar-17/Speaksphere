@@ -1,65 +1,101 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { ToastContainer } from "react-toastify"; // ✅ Import ToastContainer
-import "react-toastify/dist/ReactToastify.css";  // ✅ Import Toast CSS
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 
-import Navbar from "./Admin/components/Navbar";
-import Footer from "./Admin/components/Footer";
+// Context & Utils
+import { ThemeProvider } from "./Context/ThemeContext";
+import AdminRoute from "./components/AdminRoute";
 
-import Login from "./Admin/pages/Login";
-import Signup from "./Admin/pages/Signup";
+// Layout Components
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import AdminDashboard from "./Admin/pages/AdminDashboard";
-import ManageComplaints from "./Admin/pages/ManageComplaints";
-import Profile from "./Admin/pages/Profile";
+// Pages
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import AdminDashboard from "./pages/AdminDashboard";
+import ManageComplaints from "./pages/ManageComplaints";
+import Profile from "./pages/Profile";
 
 // Global API URL
 export const API_URL = import.meta.env.VITE_API_URL;
 
-// Layout wrapper (hide Navbar/Footer on login & signup)
+
 function Layout({ children }) {
   const location = useLocation();
-  const hideLayout =
-    location.pathname === "/login" || location.pathname === "/signup";
+  const hideLayout = ["/login", "/signup"].includes(location.pathname);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen theme-page transition-colors duration-300">
       {!hideLayout && <Navbar />}
-      {children}
+      
+     
+      <main className="flex-grow">
+        {children}
+      </main>
+
       {!hideLayout && <Footer />}
-    </>
+    </div>
   );
 }
 
 export default function App() {
   return (
-    <BrowserRouter>
-      {/* ✅ Global Toast Configuration */}
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark" // Matches the dark Admin theme
-      />
+    <ThemeProvider>
+      <Router>
+      
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
 
-      <Layout>
-        <Routes>
-          {/* 🔓 Auth */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-
-          {/* 🛡️ Admin Pages */}
-          <Route path="/" element={<AdminDashboard />} />
+        <Layout>
+          <Routes>
           
-          <Route path="/managecomplaints" element={<ManageComplaints />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
+          
+            <Route
+              path="/"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
+            
+            <Route
+              path="/manage-complaints"
+              element={
+                <AdminRoute>
+                  <ManageComplaints />
+                </AdminRoute>
+              }
+            />
+            
+            <Route
+              path="/profile"
+              element={
+                <AdminRoute>
+                  <Profile />
+                </AdminRoute>
+              }
+            />
+
+            
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }

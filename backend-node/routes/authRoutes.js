@@ -5,30 +5,25 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-/**
- * @route   POST /api/auth/register
- * @desc    Register new user
- * @access  Public
- */
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
-    // 1️⃣ Validation
+    
     if (!name || !email || !password) {
       return res.status(400).json({ msg: "All fields are required" });
     }
 
-    // 2️⃣ Check existing user
+  
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({ msg: "User already exists" });
     }
 
-    // 3️⃣ Hash password
+   
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 4️⃣ Create user
+   
     const user = await User.create({
       name,
       email,
@@ -36,7 +31,7 @@ router.post("/register", async (req, res) => {
       role: role || "student",
     });
 
-    // 5️⃣ Response (DO NOT send password)
+
     res.status(201).json({
       msg: "Registration successful",
       user: {

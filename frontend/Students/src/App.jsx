@@ -1,18 +1,20 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify"; // ✅ Import ToastContainer
-import "react-toastify/dist/ReactToastify.css";  // ✅ Import Toast CSS
+import { ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css";  
 
-import Navbar from "./Students/components/Navbar";
-import Footer from "./Students/components/Footer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import Login from "./Students/pages/Login";
-import Signup from "./Students/pages/Signup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
-import Home from "./Students/pages/Home";
-import Profile from "./Students/pages/Profile";
-import AddComplaint from "./Students/pages/AddComplaints";
-import MyComplaints from "./Students/pages/MyComplaints";
-import AllComplaints from "./Students/pages/AllComplaints";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import AddComplaint from "./pages/AddComplaints";
+import MyComplaints from "./pages/MyComplaints";
+import AllComplaints from "./pages/AllComplaints";
+
+import { ThemeProvider } from "./context/ThemeContext";
 
 export const API_URL = import.meta.env.VITE_API_URL;
 
@@ -39,6 +41,7 @@ function Layout({ children }) {
 
 export default function App() {
   return (
+    <ThemeProvider>
     <BrowserRouter>
       {/* ✅ Global Toast Configuration */}
       <ToastContainer
@@ -96,5 +99,6 @@ export default function App() {
         </Routes>
       </Layout>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }

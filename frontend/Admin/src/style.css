@@ -1,1 +1,355 @@
 @import "tailwindcss";
+
+/* --- ADMIN THEME VARIABLES --- */
+:root {
+  /* BACKGROUNDS */
+  --admin-bg: #F3F4F6; /* Gray-100 */
+  --admin-card-bg: #FFFFFF;
+  --admin-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* TEXT */
+  --admin-text-main: #1F2937; /* Gray-800 */
+  --admin-text-sub: #6B7280; /* Gray-500 */
+  --admin-title: #4338CA; /* Indigo-700 */
+
+  /* STAT CARDS */
+  --stat-neutral: #4F46E5; /* Indigo */
+  --stat-positive: #059669; /* Green */
+  --stat-warning: #D97706; /* Amber */
+  --stat-danger: #DC2626; /* Red */
+
+  /* CHART COLORS */
+  --chart-bar: #6366F1; /* Indigo */
+  --chart-grid: #E5E7EB; /* Gray-200 */
+  --chart-tooltip-bg: #FFFFFF;
+  --chart-tooltip-text: #1F2937;
+
+  /* --- NAVBAR SPECIFIC (Light) --- */
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-border: #E5E7EB;
+  --nav-link-text: #6B7280;
+  --nav-link-hover-bg: #F3F4F6;
+  --nav-link-hover-text: #111827;
+  --nav-active-bg: #E0E7FF;
+  --nav-active-text: #4338CA;
+  
+  /* Navbar Buttons */
+  --btn-student-bg: #FEF3C7; --btn-student-text: #B45309; --btn-student-border: #FDE68A;
+  --btn-logout-text: #EF4444; --btn-logout-hover-bg: #FEF2F2;
+  --btn-theme-hover: #F3F4F6;
+
+  /* FORMS & INPUTS */
+  --input-bg: #FFFFFF;
+  --input-border: #D1D5DB; /* Gray-300 */
+  --input-text: #1F2937;   /* Gray-800 */
+  --input-placeholder: #9CA3AF; /* Gray-400 */
+  --input-focus-ring: 79, 70, 229; /* Indigo-600 RGB */
+
+  /* BUTTONS */
+  --btn-gradient: linear-gradient(135deg, #4338CA 0%, #6366F1 100%); /* Indigo-700 to Indigo-500 */
+  --btn-text: #FFFFFF;
+  --btn-shadow: rgba(67, 56, 202, 0.4);
+
+  /* FOOTER SPECIFIC */
+  --footer-bg: #FFFFFF;
+  --footer-border: #E5E7EB; /* Gray-200 */
+  --footer-text-main: #374151; /* Gray-700 */
+  --footer-text-sub: #9CA3AF; /* Gray-400 */
+  --footer-link-hover: #4F46E5; /* Indigo-600 */
+
+  /* FILTERS & INPUTS */
+  --filter-bg: #FFFFFF;
+  --filter-border: #D1D5DB;
+  --filter-text: #374151;
+  --filter-focus-ring: 99, 102, 241; /* Indigo RGB */
+
+  /* STATUS COLORS (Used for Badges & Cards) */
+  /* Resolved (Green) */
+  --status-resolved-bg: #D1FAE5; 
+  --status-resolved-text: #065F46; 
+  --status-resolved-border: #34D399;
+  
+  /* Rejected (Red) */
+  --status-rejected-bg: #FEE2E2; 
+  --status-rejected-text: #991B1B; 
+  --status-rejected-border: #F87171;
+  
+  /* Pending (Yellow) */
+  --status-pending-bg: #FEF3C7; 
+  --status-pending-text: #92400E; 
+  --status-pending-border: #FBBF24;
+
+  /* BUTTONS */
+  --btn-resolve-bg: #059669; --btn-resolve-hover: #047857;
+  --btn-reject-bg: #DC2626; --btn-reject-hover: #B91C1C;
+}
+
+/* DARK MODE OVERRIDES */
+.dark {
+  /* BACKGROUNDS */
+  --admin-bg: #0B1120; /* Deep Space Black */
+  --admin-card-bg: #1E293B; /* Slate-800 */
+  --admin-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+
+  /* TEXT */
+  --admin-text-main: #F9FAFB; /* Gray-50 */
+  --admin-text-sub: #9CA3AF; /* Gray-400 */
+  --admin-title: #818CF8; /* Indigo-400 */
+
+  /* STAT CARDS */
+  --stat-neutral: #818CF8; 
+  --stat-positive: #34D399; 
+  --stat-warning: #FBBF24; 
+  --stat-danger: #F87171; 
+
+  /* CHART COLORS */
+  --chart-bar: #818CF8; 
+  --chart-grid: #374151; /* Gray-700 */
+  --chart-tooltip-bg: #1F2937;
+  --chart-tooltip-text: #F9FAFB;
+
+  /* --- NAVBAR SPECIFIC (Dark) --- */
+  --nav-bg: rgba(30, 41, 59, 0.9);
+  --nav-border: #374151;
+  --nav-link-text: #9CA3AF;
+  --nav-link-hover-bg: rgba(255, 255, 255, 0.05);
+  --nav-link-hover-text: #F9FAFB;
+  --nav-active-bg: rgba(67, 56, 202, 0.3);
+  --nav-active-text: #818CF8;
+
+  /* Navbar Buttons */
+  --btn-student-bg: rgba(180, 83, 9, 0.2); --btn-student-text: #FCD34D; --btn-student-border: rgba(251, 191, 36, 0.3);
+  --btn-logout-text: #F87171; --btn-logout-hover-bg: rgba(239, 68, 68, 0.1);
+  --btn-theme-hover: rgba(255, 255, 255, 0.1);
+
+  /* FORMS & INPUTS */
+  --input-bg: #1F2937; /* Gray-800 */
+  --input-border: #374151; /* Gray-700 */
+  --input-text: #F9FAFB; /* Gray-50 */
+  --input-placeholder: #6B7280; /* Gray-500 */
+  --input-focus-ring: 129, 140, 248; /* Indigo-400 RGB */
+
+  /* BUTTONS */
+  --btn-gradient: linear-gradient(135deg, #4F46E5 0%, #818CF8 100%); /* Indigo-600 to Indigo-400 */
+  --btn-shadow: rgba(79, 70, 229, 0.3);
+
+  /* FOOTER SPECIFIC */
+  --footer-bg: #1E293B; /* Slate-800 */
+  --footer-border: #374151; /* Gray-700 */
+  --footer-text-main: #F3F4F6; /* Gray-100 */
+  --footer-text-sub: #9CA3AF; /* Gray-400 */
+  --footer-link-hover: #818CF8; /* Indigo-400 */
+
+  /* FILTERS & INPUTS */
+  --filter-bg: #FFFFFF;
+  --filter-border: #D1D5DB;
+  --filter-text: #374151;
+  --filter-focus-ring: 99, 102, 241; /* Indigo RGB */
+
+  /* STATUS COLORS (Used for Badges & Cards) */
+  /* Resolved (Green) */
+  --status-resolved-bg: #D1FAE5; 
+  --status-resolved-text: #065F46; 
+  --status-resolved-border: #34D399;
+  
+  /* Rejected (Red) */
+  --status-rejected-bg: #FEE2E2; 
+  --status-rejected-text: #991B1B; 
+  --status-rejected-border: #F87171;
+  
+  /* Pending (Yellow) */
+  --status-pending-bg: #FEF3C7; 
+  --status-pending-text: #92400E; 
+  --status-pending-border: #FBBF24;
+
+  /* BUTTONS */
+  --btn-resolve-bg: #059669; --btn-resolve-hover: #047857;
+  --btn-reject-bg: #DC2626; --btn-reject-hover: #B91C1C;
+}
+
+/* DARK MODE OVERRIDES */
+.dark {
+  /* ... existing variables ... */
+
+  /* FILTERS */
+  --filter-bg: #1F2937;
+  --filter-border: #374151;
+  --filter-text: #F3F4F6;
+  --filter-focus-ring: 129, 140, 248;
+
+  /* STATUS COLORS (Glassy Dark Mode) */
+  --status-resolved-bg: rgba(6, 95, 70, 0.3); 
+  --status-resolved-text: #6EE7B7; 
+  --status-resolved-border: rgba(16, 185, 129, 0.4);
+
+  --status-rejected-bg: rgba(153, 27, 27, 0.3); 
+  --status-rejected-text: #FCA5A5; 
+  --status-rejected-border: rgba(239, 68, 68, 0.4);
+
+  --status-pending-bg: rgba(146, 64, 14, 0.3); 
+  --status-pending-text: #FCD34D; 
+  --status-pending-border: rgba(245, 158, 11, 0.4);
+
+  /* BUTTONS */
+  --btn-resolve-bg: #059669; --btn-resolve-hover: #10B981;
+  --btn-reject-bg: #B91C1C; --btn-reject-hover: #EF4444;
+}
+
+/* --- UTILITY CLASSES --- */
+
+/* Page Layout */
+.admin-page {
+  background-color: var(--admin-bg);
+  min-height: 100vh;
+  color: var(--admin-text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.admin-header {
+  color: var(--admin-title);
+}
+
+/* Cards */
+.admin-card {
+  background-color: var(--admin-card-bg);
+  box-shadow: var(--admin-card-shadow);
+  color: var(--admin-text-main);
+  transition: background-color 0.3s ease;
+}
+
+/* Text Helpers */
+.text-main { color: var(--admin-text-main); }
+.text-sub { color: var(--admin-text-sub); }
+
+/* Stat Colors */
+.stat-text-neutral { color: var(--stat-neutral); }
+.stat-text-positive { color: var(--stat-positive); }
+.stat-text-warning { color: var(--stat-warning); }
+.stat-text-danger { color: var(--stat-danger); }
+
+/* --- NAVBAR UTILITIES --- */
+.admin-navbar {
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(12px);
+}
+
+.nav-link {
+  color: var(--nav-link-text);
+  transition: all 0.2s ease;
+}
+.nav-link:hover {
+  background-color: var(--nav-link-hover-bg);
+  color: var(--nav-link-hover-text);
+}
+
+.nav-link-active {
+  background-color: var(--nav-active-bg);
+  color: var(--nav-active-text);
+}
+
+.btn-student-view {
+  background-color: var(--btn-student-bg);
+  color: var(--btn-student-text);
+  border: 1px solid var(--btn-student-border);
+}
+
+.btn-logout {
+  color: var(--btn-logout-text);
+  border: 1px solid transparent;
+}
+.btn-logout:hover {
+  background-color: var(--btn-logout-hover-bg);
+}
+
+.btn-theme-toggle {
+  color: var(--nav-link-text);
+}
+.btn-theme-toggle:hover {
+  background-color: var(--btn-theme-hover);
+}
+
+.admin-footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  color: var(--footer-text-main);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* Input Fields */
+.admin-input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  transition: all 0.2s ease;
+}
+.admin-input::placeholder { color: var(--input-placeholder); }
+.admin-input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px rgba(var(--input-focus-ring), 0.3);
+}
+
+/* Gradient Button */
+.btn-admin-gradient {
+  background: var(--btn-gradient);
+  color: var(--btn-text);
+  box-shadow: 0 4px 6px -1px var(--btn-shadow);
+  transition: all 0.3s ease;
+}
+.btn-admin-gradient:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px -1px var(--btn-shadow);
+}
+
+.footer-link {
+  color: var(--footer-text-sub);
+  transition: color 0.2s ease;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.footer-link:hover {
+  color: var(--footer-link-hover);
+}
+
+.footer-text-sub {
+  color: var(--footer-text-sub);
+}
+
+/* Filter Inputs */
+.admin-filter {
+  background-color: var(--filter-bg);
+  border: 1px solid var(--filter-border);
+  color: var(--filter-text);
+  transition: all 0.2s ease;
+}
+.admin-filter:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px rgba(var(--filter-focus-ring), 0.3);
+}
+
+/* Status Badges (Pills) */
+.badge-base { border: 1px solid transparent; }
+
+.badge-resolved { background-color: var(--status-resolved-bg); color: var(--status-resolved-text); border-color: var(--status-resolved-border); }
+.badge-rejected { background-color: var(--status-rejected-bg); color: var(--status-rejected-text); border-color: var(--status-rejected-border); }
+.badge-pending { background-color: var(--status-pending-bg); color: var(--status-pending-text); border-color: var(--status-pending-border); }
+.badge-neutral { background-color: var(--admin-border); color: var(--text-sub); border-color: transparent; }
+
+/* Status Cards (Full Card Styling) */
+.card-status-resolved { background-color: var(--status-resolved-bg); border: 1px solid var(--status-resolved-border); }
+.card-status-rejected { background-color: var(--status-rejected-bg); border: 1px solid var(--status-rejected-border); }
+.card-status-pending { background-color: var(--status-pending-bg); border: 1px solid var(--status-pending-border); }
+
+/* Action Buttons */
+.btn-resolve { background-color: var(--btn-resolve-bg); color: white; transition: background-color 0.2s; }
+.btn-resolve:hover { background-color: var(--btn-resolve-hover); }
+
+.btn-reject { background-color: var(--btn-reject-bg); color: white; transition: background-color 0.2s; }
+.btn-reject:hover { background-color: var(--btn-reject-hover); }
+
+.text-clear-filter { color: var(--stat-danger); }
+.text-clear-filter:hover { text-decoration: underline; }
