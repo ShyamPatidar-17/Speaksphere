@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { User, Mail, Lock, ShieldCheck, Loader2, ArrowRight } from "lucide-react";
 import { API_URL } from "../App";
+
 import "../Style.css"; 
 
 export default function Signup() {
