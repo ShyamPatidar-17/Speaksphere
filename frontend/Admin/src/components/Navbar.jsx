@@ -1,8 +1,8 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Moon, Sun, LogOut, ExternalLink, User } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
-import "../Style.css"; 
+import { useTheme } from "../Context/ThemeContext";
 
+import "../Style.css"; 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();

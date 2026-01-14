@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import { Github, Twitter, Linkedin } from "lucide-react"; // Optional icons
-import "../Style.css"; // ✅ Import Admin Styles
+import { Github, Twitter, Linkedin } from "lucide-react";
+import "../Style.css"; 
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
   return (
-    // STRUCTURE: Tailwind | COLOR: admin-footer
     <footer className="admin-footer mt-auto w-full">
       <div className="max-w-7xl mx-auto px-6 py-12">
         
