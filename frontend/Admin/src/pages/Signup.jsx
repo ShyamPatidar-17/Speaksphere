@@ -5,7 +5,7 @@ import { toast, Toaster } from "react-hot-toast";
 import { User, Mail, Lock, ShieldCheck, Loader2, ArrowRight } from "lucide-react";
 import { API_URL } from "../App";
 
-import "../Style.css"; 
+import "../Style.css"
 
 export default function Signup() {
   const [form, setForm] = useState({
